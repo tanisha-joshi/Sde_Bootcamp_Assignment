@@ -27,11 +27,14 @@ class TaskManager:
         else:
             print("Invalid task index.")
 
-    def write_tasks(self):
+    def write_tasks(self, filename):
         """
         This method writes the list of tasks to a file
         """
-        pass
+        with open(filename, 'w') as file:
+            for task in self.tasks:
+                status = "Completed" if task.completed else "Pending"
+                file.write(f"{task.description} - {status}\n")
 
 def main():
     task_manager = TaskManager()
